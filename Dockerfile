@@ -7,10 +7,10 @@ WORKDIR /app
 
 # Dependencias del sistema necesarias para compilar/conectar psycopg2 con PostgreSQL
 RUN if [ -f /etc/apt/sources.list.d/debian.sources ]; then \
-        sed -i 's|http://deb.debian.org/debian-security|http://security.debian.org/debian-security|g; s|http://deb.debian.org/debian|http://ftp.us.debian.org/debian|g' /etc/apt/sources.list.d/debian.sources; \
+        sed -i 's|http://|https://|g' /etc/apt/sources.list.d/debian.sources; \
     fi \
-    && apt-get -o Acquire::Retries=5 -o Acquire::http::Timeout=20 update \
-    && apt-get -o Acquire::Retries=5 -o Acquire::http::Timeout=20 install -y --no-install-recommends \
+    && apt-get update \
+    && apt-get install -y --no-install-recommends \
     libpq-dev \
     gcc \
     && rm -rf /var/lib/apt/lists/*
