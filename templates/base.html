@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Gestión de Usuarios Cloud{% endblock %}</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="min-h-screen bg-slate-50 text-slate-800 antialiased flex flex-col">
+    {% if admin_user %}
+    <header class="bg-slate-900 text-white shadow-md">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+            <div class="flex items-center gap-3">
+                <div class="h-10 w-10 rounded-lg bg-indigo-500 flex items-center justify-center font-bold text-white shadow-sm">
+                    AWS
+                </div>
+                <div>
+                    <a href="/" class="text-lg font-semibold tracking-tight hover:text-indigo-300 transition">
+                        Administración de Usuarios
+                    </a>
+                    <p class="text-xs text-slate-400">
+                        EC2 + Docker · RDS PostgreSQL · Amazon S3 Privado
+                    </p>
+                </div>
+            </div>
+            <div class="flex items-center gap-4">
+                <span class="inline-flex items-center gap-2 rounded-full bg-slate-800 px-3 py-1 text-xs font-medium text-slate-200 border border-slate-700">
+                    <span class="h-2 w-2 rounded-full bg-emerald-400"></span>
+                    Admin: {{ admin_user }}
+                </span>
+                <form action="/logout" method="post">
+                    <button
+                        type="submit"
+                        class="rounded-lg bg-rose-600 hover:bg-rose-500 px-3.5 py-1.5 text-sm font-medium text-white transition shadow-sm"
+                    >
+                        Cerrar sesión
+                    </button>
+                </form>
+            </div>
+        </div>
+    </header>
+    {% endif %}
+
+    <main class="flex-1 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer class="border-t border-slate-200 bg-white py-4 mt-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-xs text-slate-500">
+            Plataforma de Gestión de Usuarios · FastAPI + SQLAlchemy + Amazon S3 (URLs Prefirmadas)
+        </div>
+    </footer>
+</body>
+</html>
+

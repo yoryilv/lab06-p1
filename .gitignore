@@ -1,0 +1,28 @@
+# Entorno y secretos
+.env
+.env.*
+!.env.example
+
+# Entornos virtuales Python
+.venv/
+venv/
+env/
+
+# Cachés y compilados Python
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Bases de datos locales de prueba
+*.db
+*.sqlite
+*.sqlite3
+
+# Archivos del sistema operativo y editores
+.DS_Store
+.vscode/
+.idea/
+
